@@ -1,0 +1,24 @@
+---
+/**
+ * Smooth Scroll Wrapper Component
+ * Wraps content with Lenis smooth scrolling
+ */
+---
+
+<div id="smooth-wrapper" class="relative">
+  <div id="smooth-content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  #smooth-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  #smooth-content {
+    will-change: transform;
+  }
+</style>

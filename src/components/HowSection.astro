@@ -1,0 +1,79 @@
+---
+/**
+ * How Section Component
+ * Displays approaches and methodology
+ */
+import { getCollection } from 'astro:content';
+import SectionWrapper from './SectionWrapper.astro';
+import ParallaxImage from './ParallaxImage.astro';
+
+const howContent = await getCollection('how');
+const content = howContent[0];
+const { Content } = await content.render();
+
+const iconMap: Record<string, string> = {
+  brain: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>`,
+  heart: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>`,
+  leaf: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>`,
+  anchor: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3zm0 0v13m0 0l-4-4m4 4l4-4"/></svg>`,
+};
+---
+
+<SectionWrapper id="how" background={content.data.background}>
+  <div class="grid lg:grid-cols-2 gap-16 items-center">
+    <!-- Left: Content -->
+    <div data-animate="fade-up">
+      <!-- Section Header -->
+      <div class="mb-10">
+        <h2 class="text-display md:text-display-lg text-forest-900 mb-4">
+          {content.data.title}
+        </h2>
+        {content.data.subtitle && (
+          <p class="text-body-lg text-forest-600">
+            {content.data.subtitle}
+          </p>
+        )}
+      </div>
+
+      <!-- Approaches -->
+      {content.data.approaches && (
+        <div class="space-y-6 mb-10" data-stagger="0.15">
+          {content.data.approaches.map((approach) => (
+            <div class="flex gap-4 group">
+              <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-forest-600 text-mist flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                <Fragment set:html={iconMap[approach.icon || 'leaf']} />
+              </div>
+              <div>
+                <h3 class="text-heading-sm text-forest-800 mb-1">
+                  {approach.title}
+                </h3>
+                <p class="text-body-sm text-forest-600">
+                  {approach.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+
+    <!-- Right: Image -->
+    <div data-animate="scale-up" class="order-first lg:order-last">
+      <ParallaxImage
+        src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&q=80"
+        alt="A peaceful forest path"
+        height="600px"
+        speed={0.3}
+        rounded={true}
+        className="shadow-soft-lg"
+      />
+    </div>
+  </div>
+
+  <!-- Extended Content -->
+  <div class="mt-20 max-w-3xl mx-auto" data-animate="fade-up">
+    <div class="prose-nature">
+      <Content />
+    </div>
+  </div>
+</SectionWrapper>

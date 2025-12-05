@@ -1,0 +1,344 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   CSS Custom Properties - Nature Palette
+   ============================================ */
+:root {
+    /* Forest Greens */
+    --color-forest-50: #F5F7F4;
+    --color-forest-100: #E7ECE8;
+    --color-forest-200: #CFE3CF;
+    --color-forest-300: #A8C2A5;
+    --color-forest-400: #7BA37A;
+    --color-forest-500: #597A5B;
+    --color-forest-600: #3E5E42;
+    --color-forest-700: #2F4A31;
+    --color-forest-800: #1E3320;
+    --color-forest-900: #0E1A12;
+
+    /* Moss Tones */
+    --color-moss-light: #CFE3CF;
+    --color-moss: #A8C2A5;
+    --color-moss-dark: #7BA37A;
+
+    /* Bark Browns */
+    --color-bark-light: #6B5B52;
+    --color-bark: #5A4A42;
+    --color-bark-dark: #42372F;
+
+    /* Misty Neutrals */
+    --color-mist-light: #FFFFFF;
+    --color-mist: #F5F7F4;
+    --color-mist-medium: #E7ECE8;
+    --color-mist-dark: #D4DBD6;
+
+    /* Night Forest */
+    --color-night: #0E1A12;
+
+    /* Typography */
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-serif: 'Lora', Georgia, serif;
+    --font-display: 'Work Sans', 'Inter', system-ui, sans-serif;
+
+    /* Spacing */
+    --section-padding: clamp(4rem, 10vw, 8rem);
+    --container-max: 1280px;
+    --container-padding: clamp(1.5rem, 5vw, 3rem);
+
+    /* Transitions */
+    --ease-gentle: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-soft-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-soft-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --duration-slow: 800ms;
+    --duration-medium: 500ms;
+    --duration-fast: 300ms;
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+@layer base {
+    html {
+        scroll-behavior: auto;
+        /* Lenis handles smooth scroll */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+    }
+
+    html.lenis,
+    html.lenis body {
+        height: auto;
+    }
+
+    .lenis.lenis-smooth {
+        scroll-behavior: auto !important;
+    }
+
+    .lenis.lenis-smooth [data-lenis-prevent] {
+        overscroll-behavior: contain;
+    }
+
+    .lenis.lenis-stopped {
+        overflow: hidden;
+    }
+
+    .lenis.lenis-smooth iframe {
+        pointer-events: none;
+    }
+
+    body {
+        @apply bg-mist text-forest-800 font-sans;
+        font-size: 18px;
+        line-height: 1.8;
+        overflow-x: hidden;
+    }
+
+    /* Selection */
+    ::selection {
+        @apply bg-moss/40 text-forest-900;
+    }
+
+    /* Headings */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-display font-medium text-forest-900;
+        text-wrap: balance;
+    }
+
+    h1 {
+        @apply text-display-lg md:text-display-xl;
+    }
+
+    h2 {
+        @apply text-display md:text-display-lg;
+    }
+
+    h3 {
+        @apply text-heading-lg;
+    }
+
+    h4 {
+        @apply text-heading;
+    }
+
+    /* Paragraphs */
+    p {
+        @apply text-body text-forest-700;
+        text-wrap: pretty;
+        max-width: 70ch;
+    }
+
+    /* Links */
+    a {
+        @apply transition-colors duration-300 ease-gentle;
+    }
+
+    /* Images */
+    img {
+        @apply max-w-full h-auto;
+    }
+
+    /* Focus states - accessible and calm */
+    :focus-visible {
+        @apply outline-2 outline-offset-4 outline-forest-500;
+    }
+}
+
+/* ============================================
+   Component Utilities
+   ============================================ */
+@layer components {
+
+    /* Container */
+    .container-narrow {
+        @apply max-w-3xl mx-auto px-6;
+    }
+
+    .container-wide {
+        @apply max-w-7xl mx-auto px-6 lg:px-12;
+    }
+
+    /* Section spacing */
+    .section-padding {
+        padding-top: var(--section-padding);
+        padding-bottom: var(--section-padding);
+    }
+
+    /* Glass effect */
+    .glass {
+        @apply bg-mist/70 backdrop-blur-md border border-forest-100/50;
+    }
+
+    .glass-dark {
+        @apply bg-forest-900/70 backdrop-blur-md border border-forest-700/50;
+    }
+
+    /* Organic shapes */
+    .blob {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+
+    .blob-2 {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+
+    /* Text gradient */
+    .text-gradient {
+        @apply bg-gradient-to-r from-forest-600 via-forest-500 to-moss-dark bg-clip-text text-transparent;
+    }
+
+    /* Soft divider */
+    .divider-soft {
+        @apply h-px bg-gradient-to-r from-transparent via-forest-200 to-transparent;
+    }
+
+    /* Image overlays */
+    .overlay-gradient {
+        @apply absolute inset-0 bg-gradient-to-b from-forest-900/20 via-transparent to-forest-900/40;
+    }
+
+    .overlay-mist {
+        @apply absolute inset-0 bg-gradient-to-b from-mist/10 via-mist/5 to-mist/20;
+    }
+
+    /* Button styles */
+    .btn {
+        @apply inline-flex items-center justify-center px-8 py-4 rounded-full font-medium;
+        @apply transition-all duration-500 ease-soft-out;
+        @apply focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-forest-500;
+    }
+
+    .btn-primary {
+        @apply btn bg-forest-600 text-mist hover:bg-forest-700;
+        @apply hover:shadow-soft-lg hover:-translate-y-0.5;
+    }
+
+    .btn-secondary {
+        @apply btn bg-transparent text-forest-700 border-2 border-forest-300;
+        @apply hover:bg-forest-50 hover:border-forest-400;
+    }
+
+    .btn-ghost {
+        @apply btn text-forest-600 hover:text-forest-800 hover:bg-forest-50;
+    }
+
+    /* Card */
+    .card {
+        @apply bg-mist-light rounded-2xl p-8 shadow-soft;
+        @apply transition-all duration-500 ease-soft-out;
+    }
+
+    .card:hover {
+        @apply shadow-soft-lg -translate-y-1;
+    }
+
+    /* Prose customization */
+    .prose-nature {
+        @apply prose prose-lg max-w-none;
+        @apply prose-headings:font-display prose-headings:text-forest-900;
+        @apply prose-p:text-forest-700 prose-p:leading-relaxed;
+        @apply prose-a:text-forest-600 prose-a:no-underline hover:prose-a:text-forest-800;
+        @apply prose-strong:text-forest-800 prose-strong:font-semibold;
+        @apply prose-ul:text-forest-700 prose-ol:text-forest-700;
+        @apply prose-li:marker:text-moss-dark;
+    }
+}
+
+/* ============================================
+   Animation Utilities
+   ============================================ */
+@layer utilities {
+
+    /* Reveal animations - initial states */
+    .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        will-change: transform, opacity;
+    }
+
+    .reveal-up {
+        opacity: 0;
+        transform: translateY(60px);
+        will-change: transform, opacity;
+    }
+
+    .reveal-scale {
+        opacity: 0;
+        transform: scale(0.95);
+        will-change: transform, opacity;
+    }
+
+    .reveal-fade {
+        opacity: 0;
+        will-change: opacity;
+    }
+
+    /* Stagger children */
+    .stagger-children>* {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    /* Parallax container */
+    .parallax-container {
+        @apply overflow-hidden;
+    }
+
+    .parallax-element {
+        will-change: transform;
+    }
+
+    /* Smooth image loading */
+    .img-loading {
+        @apply bg-forest-100 animate-pulse;
+    }
+
+    /* Hide scrollbar but keep functionality */
+    .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+/* ============================================
+   Typography Enhancements
+   ============================================ */
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+
+    .text-pretty {
+        text-wrap: pretty;
+    }
+
+    /* Large quote styling */
+    .quote-large {
+        @apply text-heading-lg md:text-display font-serif italic text-forest-600;
+        @apply relative pl-8 border-l-4 border-moss;
+    }
+}
+
+/* ============================================
+   Print Styles
+   ============================================ */
+@media print {
+    body {
+        @apply bg-white text-black;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+}

@@ -1,0 +1,112 @@
+---
+/**
+ * Footer Component
+ * Contact information and closing section
+ */
+
+interface Props {
+  email?: string;
+  phone?: string;
+  location?: string;
+}
+
+const {
+  email = 'hello@atellier.com',
+  phone = '+48 123 456 789',
+  location = 'Warsaw, Poland',
+} = Astro.props;
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer id="footer" class="relative bg-forest-900 text-forest-100 overflow-hidden">
+  <!-- Ambient background -->
+  <div class="absolute inset-0 opacity-30">
+    <div class="absolute top-0 left-1/4 w-96 h-96 bg-forest-700 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-forest-800 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative container-wide section-padding">
+    <div class="grid md:grid-cols-2 gap-16 lg:gap-24">
+      <!-- Left Column -->
+      <div data-animate="fade-up">
+        <h2 class="text-display-lg text-mist mb-6">
+          Ready to begin?
+        </h2>
+        <p class="text-body-lg text-forest-200 mb-8 max-w-md">
+          Taking the first step is often the hardest. But you don't have to figure everything out alone.
+          Reach out, and let's talk about what support might look like for you.
+        </p>
+        <a
+          href={`mailto:${email}`}
+          class="btn-primary inline-flex items-center gap-3 bg-moss text-forest-900 hover:bg-moss-light"
+        >
+          <span>Get in touch</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Right Column - Contact Details -->
+      <div class="space-y-8" data-animate="fade-up">
+        <div>
+          <h3 class="text-sm uppercase tracking-wider text-forest-400 mb-3">Email</h3>
+          <a
+            href={`mailto:${email}`}
+            class="text-heading text-mist hover:text-moss transition-colors duration-300"
+          >
+            {email}
+          </a>
+        </div>
+
+        <div>
+          <h3 class="text-sm uppercase tracking-wider text-forest-400 mb-3">Phone</h3>
+          <a
+            href={`tel:${phone.replace(/\s/g, '')}`}
+            class="text-heading text-mist hover:text-moss transition-colors duration-300"
+          >
+            {phone}
+          </a>
+        </div>
+
+        <div>
+          <h3 class="text-sm uppercase tracking-wider text-forest-400 mb-3">Location</h3>
+          <p class="text-heading text-mist">
+            {location}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="mt-20 pt-8 border-t border-forest-700/50 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-2 text-forest-400">
+        <span class="text-moss">●</span>
+        <span class="font-display font-medium">Atellier</span>
+      </div>
+
+      <nav class="flex flex-wrap justify-center gap-6 text-sm text-forest-400">
+        <a href="#regulations" class="hover:text-mist transition-colors duration-300">
+          Privacy Policy
+        </a>
+        <a href="#regulations" class="hover:text-mist transition-colors duration-300">
+          Terms of Service
+        </a>
+      </nav>
+
+      <p class="text-sm text-forest-500">
+        © {currentYear} All rights reserved.
+      </p>
+    </div>
+  </div>
+
+  <!-- Decorative leaf SVG -->
+  <svg
+    class="absolute bottom-0 right-0 w-64 h-64 text-forest-800 opacity-20"
+    viewBox="0 0 200 200"
+    fill="currentColor"
+  >
+    <path d="M100,10 Q150,50 180,100 Q150,150 100,190 Q50,150 20,100 Q50,50 100,10 Z" />
+  </svg>
+</footer>

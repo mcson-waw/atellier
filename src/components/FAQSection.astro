@@ -1,0 +1,119 @@
+---
+/**
+ * FAQ Section Component
+ * Accordion-style frequently asked questions
+ */
+import { getCollection } from 'astro:content';
+import SectionWrapper from './SectionWrapper.astro';
+
+const faqContent = await getCollection('faq');
+const content = faqContent[0];
+const { Content } = await content.render();
+---
+
+<SectionWrapper id="faq" background={content.data.background}>
+  <div class="max-w-3xl mx-auto">
+    <!-- Section Header -->
+    <div class="text-center mb-16" data-animate="fade-up">
+      <h2 class="text-display md:text-display-lg text-forest-900 mb-4">
+        {content.data.title}
+      </h2>
+      {content.data.subtitle && (
+        <p class="text-body-lg text-forest-600">
+          {content.data.subtitle}
+        </p>
+      )}
+    </div>
+
+    <!-- FAQ Accordion -->
+    {content.data.questions && (
+      <div class="space-y-4" data-stagger="0.1">
+        {content.data.questions.map((item, index) => (
+          <div 
+            class="faq-item border border-forest-200 rounded-xl overflow-hidden bg-mist-light"
+            data-faq-item
+          >
+            <button
+              class="faq-trigger w-full flex items-center justify-between p-6 text-left hover:bg-forest-50 transition-colors duration-300"
+              aria-expanded="false"
+              aria-controls={`faq-content-${index}`}
+            >
+              <span class="text-heading-sm text-forest-800 pr-4">
+                {item.question}
+              </span>
+              <span class="faq-icon flex-shrink-0 w-8 h-8 rounded-full bg-forest-100 flex items-center justify-center text-forest-600 transition-transform duration-300">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </button>
+            <div
+              id={`faq-content-${index}`}
+              class="faq-content hidden"
+            >
+              <div class="px-6 pb-6 text-body text-forest-600">
+                {item.answer}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+
+    <!-- Extended Content -->
+    <div class="mt-16" data-animate="fade-up">
+      <div class="prose-nature text-center">
+        <Content />
+      </div>
+    </div>
+  </div>
+</SectionWrapper>
+
+<style>
+  .faq-item.open .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  .faq-item.open .faq-trigger {
+    @apply bg-forest-50;
+  }
+
+  .faq-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .faq-item.open .faq-content {
+    max-height: 500px;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const faqItems = document.querySelectorAll('[data-faq-item]');
+
+    faqItems.forEach((item) => {
+      const trigger = item.querySelector('.faq-trigger');
+      const content = item.querySelector('.faq-content');
+
+      trigger?.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+
+        // Close all other items
+        faqItems.forEach((otherItem) => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('open');
+            otherItem.querySelector('.faq-content')?.classList.add('hidden');
+            otherItem.querySelector('.faq-trigger')?.setAttribute('aria-expanded', 'false');
+          }
+        });
+
+        // Toggle current item
+        item.classList.toggle('open');
+        content?.classList.toggle('hidden');
+        trigger.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      });
+    });
+  });
+</script>

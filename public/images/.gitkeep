@@ -1,0 +1,77 @@
+<!-- 
+  PLACEHOLDER IMAGE REFERENCES
+  ============================
+  
+  This file documents the placeholder images used throughout the site.
+  Replace these with your own nature photography.
+  
+  Required Images:
+  ================
+  
+  1. /images/hero-forest.jpg
+     - Full-screen hero background
+     - Recommended: 2560x1440px minimum
+     - Content: Dense forest, misty morning light, or peaceful woodland scene
+     - Mood: Calm, inviting, slightly ethereal
+     
+  2. /images/forest-path.jpg
+     - Used in "How I Help" section
+     - Recommended: 1200x1600px (portrait orientation)
+     - Content: Forest path, dappled sunlight, walking trail
+     - Mood: Journey, invitation, natural progression
+     
+  3. /images/og-image.jpg
+     - Social media sharing preview
+     - Recommended: 1200x630px
+     - Content: Brand logo over nature background, or compelling nature shot
+     - Include text overlay if desired
+  
+  Image Guidelines:
+  =================
+  
+  Color Harmony:
+  - Images should complement the forest green palette
+  - Avoid harsh, saturated colors
+  - Prefer soft, natural lighting
+  - Morning or evening "golden hour" light works well
+  
+  Compression:
+  - Use WebP format when possible (with JPG fallback)
+  - Aim for 80-85% quality
+  - Hero images: keep under 500KB
+  - Section images: keep under 200KB
+  
+  Tools for optimization:
+  - Squoosh (https://squoosh.app)
+  - ImageOptim (macOS)
+  - TinyPNG (https://tinypng.com)
+  
+  Adding New Images:
+  ==================
+  
+  1. Place images in /public/images/
+  2. Reference as /images/filename.jpg in components
+  3. For parallax images, use ParallaxImage component
+  4. For section backgrounds, use SectionWrapper with hasParallaxBg
+  
+  Example usage in components:
+  
+  <ParallaxImage
+    src="/images/your-image.jpg"
+    alt="Description of image"
+    height="500px"
+    speed={0.3}
+    rounded={true}
+  />
+  
+-->
+
+<!-- 
+  For development, you can use placeholder services:
+  
+  - https://picsum.photos/2560/1440 (random images)
+  - https://unsplash.com (search for "forest", "nature", "trees")
+  
+  Unsplash URLs can be used directly:
+  https://images.unsplash.com/photo-1448375240586-882707db888b?w=2560
+-->

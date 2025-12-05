@@ -1,0 +1,23 @@
+{
+    "name": "atellier-mindfulness",
+    "type": "module",
+    "version": "1.0.0",
+    "scripts": {
+        "dev": "astro dev",
+        "start": "astro dev",
+        "build": "astro build",
+        "preview": "astro preview",
+        "astro": "astro"
+    },
+    "dependencies": {
+        "@astrojs/mdx": "^4.0.2",
+        "@astrojs/tailwind": "^6.0.2",
+        "astro": "^5.1.1",
+        "gsap": "^3.12.5",
+        "lenis": "^1.1.18"
+    },
+    "devDependencies": {
+        "@tailwindcss/typography": "^0.5.15",
+        "tailwindcss": "^3.4.16"
+    }
+}

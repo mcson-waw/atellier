@@ -1,0 +1,66 @@
+---
+/**
+ * Main Index Page
+ * Assembles all sections into a single-page landing
+ */
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import WhySection from '../components/WhySection.astro';
+import HowSection from '../components/HowSection.astro';
+import ProcessSection from '../components/ProcessSection.astro';
+import PricingSection from '../components/PricingSection.astro';
+import FAQSection from '../components/FAQSection.astro';
+import RegulationsSection from '../components/RegulationsSection.astro';
+import Footer from '../components/Footer.astro';
+import SmoothScrollWrapper from '../components/SmoothScrollWrapper.astro';
+
+// Get hero content for the page
+const heroContent = await getCollection('hero');
+const hero = heroContent[0];
+---
+
+<BaseLayout
+  title="Atellier | Mindfulness & Stress Reduction"
+  description="A nature-based approach to stress reduction, nervous system regulation, and mindful living. Find your way back to calm."
+>
+  <Nav />
+  
+  <SmoothScrollWrapper>
+    <main>
+      <!-- Hero Section -->
+      <Hero
+        title={hero.data.title}
+        subtitle={hero.data.subtitle}
+        backgroundImage={hero.data.backgroundImage}
+        ctaText={hero.data.ctaText}
+        ctaHref={hero.data.ctaHref}
+      />
+
+      <!-- Why Section -->
+      <WhySection />
+
+      <!-- How Section -->
+      <HowSection />
+
+      <!-- Process Section -->
+      <ProcessSection />
+
+      <!-- Pricing Section -->
+      <PricingSection />
+
+      <!-- FAQ Section -->
+      <FAQSection />
+
+      <!-- Regulations Section -->
+      <RegulationsSection />
+    </main>
+
+    <Footer
+      email="hello@atellier.com"
+      phone="+48 123 456 789"
+      location="Warsaw, Poland"
+    />
+  </SmoothScrollWrapper>
+</BaseLayout>

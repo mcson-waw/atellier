@@ -1,0 +1,180 @@
+---
+/**
+ * Navigation Component
+ * Fixed navigation with smooth scroll to anchored sections
+ * Glass morphism effect on scroll
+ */
+
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+const navItems: NavItem[] = [
+  { label: 'Why You\'re Here', href: '#why' },
+  { label: 'How I Help', href: '#how' },
+  { label: 'Process', href: '#process' },
+  { label: 'Pricing', href: '#pricing' },
+  { label: 'FAQ', href: '#faq' },
+  { label: 'Contact', href: '#footer' },
+];
+---
+
+<nav
+  id="main-nav"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-700 ease-soft-out"
+  data-nav
+>
+  <div class="container-wide py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a
+      href="#hero"
+      class="text-forest-800 font-display font-medium text-xl tracking-tight nav-link"
+      aria-label="Back to top"
+    >
+      <span class="text-forest-600">●</span> Atellier
+    </a>
+
+    <!-- Desktop Navigation -->
+    <div class="hidden md:flex items-center gap-8">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="nav-link text-forest-700 hover:text-forest-900 text-sm font-medium tracking-wide transition-colors duration-300"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden p-2 text-forest-700 hover:text-forest-900 transition-colors"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <svg
+        class="w-6 h-6 menu-icon"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.5"
+          d="M4 6h16M4 12h16M4 18h16"
+        />
+      </svg>
+      <svg
+        class="w-6 h-6 close-icon hidden"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="1.5"
+          d="M6 18L18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="md:hidden hidden absolute top-full left-0 right-0 bg-mist/95 backdrop-blur-lg border-b border-forest-100"
+  >
+    <div class="container-wide py-6 flex flex-col gap-4">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="nav-link text-forest-700 hover:text-forest-900 text-lg font-medium py-2 transition-colors duration-300"
+        >
+          {item.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<style>
+  nav {
+    background: transparent;
+  }
+
+  nav.scrolled {
+    @apply bg-mist/80 backdrop-blur-md shadow-soft;
+  }
+
+  nav.scrolled .nav-link {
+    @apply text-forest-800;
+  }
+</style>
+
+<script>
+  import { scrollTo } from '../scripts/lenis.js';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const nav = document.getElementById('main-nav');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = mobileMenuBtn?.querySelector('.menu-icon');
+    const closeIcon = mobileMenuBtn?.querySelector('.close-icon');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // Scroll effect for nav
+    let lastScroll = 0;
+    
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.scrollY;
+      
+      if (currentScroll > 50) {
+        nav?.classList.add('scrolled');
+      } else {
+        nav?.classList.remove('scrolled');
+      }
+      
+      lastScroll = currentScroll;
+    });
+
+    // Mobile menu toggle
+    mobileMenuBtn?.addEventListener('click', () => {
+      const isOpen = mobileMenu?.classList.contains('hidden');
+      
+      mobileMenu?.classList.toggle('hidden');
+      menuIcon?.classList.toggle('hidden');
+      closeIcon?.classList.toggle('hidden');
+      
+      mobileMenuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // Smooth scroll for nav links
+    navLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+        
+        if (href?.startsWith('#')) {
+          const target = document.querySelector(href);
+          if (target) {
+            // Close mobile menu if open
+            mobileMenu?.classList.add('hidden');
+            menuIcon?.classList.remove('hidden');
+            closeIcon?.classList.add('hidden');
+            
+            // Use Lenis smooth scroll
+            if (window.lenis) {
+              scrollTo(target, { offset: -80 });
+            } else {
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        }
+      });
+    });
+  });
+</script>

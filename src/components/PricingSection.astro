@@ -1,0 +1,127 @@
+---
+/**
+ * Pricing Section Component
+ * Displays pricing packages and options
+ */
+import { getCollection } from 'astro:content';
+import SectionWrapper from './SectionWrapper.astro';
+
+const pricingContent = await getCollection('pricing');
+const content = pricingContent[0];
+const { Content } = await content.render();
+---
+
+<SectionWrapper id="pricing" background={content.data.background} className="text-mist">
+  <!-- Ambient background -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-0 right-1/4 w-96 h-96 bg-forest-600/30 rounded-full blur-3xl blob-animate-1"></div>
+    <div class="absolute bottom-1/4 left-1/4 w-80 h-80 bg-moss-dark/20 rounded-full blur-3xl blob-animate-2"></div>
+  </div>
+
+  <div class="relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-16" data-animate="fade-up">
+      <h2 class="text-display md:text-display-lg text-mist mb-4">
+        {content.data.title}
+      </h2>
+      {content.data.subtitle && (
+        <p class="text-body-lg text-forest-200 max-w-2xl mx-auto">
+          {content.data.subtitle}
+        </p>
+      )}
+    </div>
+
+    <!-- Pricing Cards -->
+    {content.data.packages && (
+      <div class="grid md:grid-cols-3 gap-6 lg:gap-8 mb-12" data-stagger="0.15">
+        {content.data.packages.map((pkg) => (
+          <div 
+            class:list={[
+              'rounded-2xl p-8 transition-all duration-500',
+              pkg.highlighted 
+                ? 'bg-mist text-forest-800 shadow-soft-lg scale-105 md:scale-110' 
+                : 'bg-forest-800/50 backdrop-blur-sm border border-forest-600/30 hover:bg-forest-800/70'
+            ]}
+          >
+            {pkg.highlighted && (
+              <div class="text-xs uppercase tracking-wider text-forest-600 font-medium mb-4">
+                Most Popular
+              </div>
+            )}
+            
+            <h3 class:list={[
+              'text-heading-sm mb-2',
+              pkg.highlighted ? 'text-forest-800' : 'text-mist'
+            ]}>
+              {pkg.name}
+            </h3>
+            
+            <div class:list={[
+              'text-display mb-4',
+              pkg.highlighted ? 'text-forest-900' : 'text-mist'
+            ]}>
+              {pkg.price}
+            </div>
+            
+            <p class:list={[
+              'text-body-sm mb-6',
+              pkg.highlighted ? 'text-forest-600' : 'text-forest-200'
+            ]}>
+              {pkg.description}
+            </p>
+            
+            <ul class="space-y-3 mb-8">
+              {pkg.features.map((feature) => (
+                <li class="flex items-start gap-3">
+                  <svg 
+                    class:list={[
+                      'w-5 h-5 flex-shrink-0 mt-0.5',
+                      pkg.highlighted ? 'text-forest-600' : 'text-moss'
+                    ]} 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class:list={[
+                    'text-body-sm',
+                    pkg.highlighted ? 'text-forest-700' : 'text-forest-100'
+                  ]}>
+                    {feature}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            
+            <a
+              href="#footer"
+              class:list={[
+                'btn w-full text-center',
+                pkg.highlighted 
+                  ? 'bg-forest-600 text-mist hover:bg-forest-700' 
+                  : 'bg-mist/10 text-mist border border-mist/30 hover:bg-mist/20'
+              ]}
+            >
+              {pkg.ctaText || 'Get Started'}
+            </a>
+          </div>
+        ))}
+      </div>
+    )}
+
+    <!-- Note -->
+    {content.data.note && (
+      <p class="text-center text-forest-200 text-body-sm mb-16" data-animate="fade-up">
+        {content.data.note}
+      </p>
+    )}
+
+    <!-- Extended Content -->
+    <div class="max-w-3xl mx-auto" data-animate="fade-up">
+      <div class="prose-nature prose-invert">
+        <Content />
+      </div>
+    </div>
+  </div>
+</SectionWrapper>

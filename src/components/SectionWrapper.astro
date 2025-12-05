@@ -1,0 +1,78 @@
+---
+/**
+ * Section Wrapper Component
+ * Reusable wrapper for all page sections with consistent styling and animations
+ */
+
+interface Props {
+  id: string;
+  className?: string;
+  background?: 'light' | 'dark' | 'mist' | 'forest' | 'transparent';
+  paddingSize?: 'default' | 'large' | 'small';
+  hasParallaxBg?: boolean;
+  parallaxImage?: string;
+  parallaxSpeed?: number;
+  overlayOpacity?: number;
+}
+
+const {
+  id,
+  className = '',
+  background = 'light',
+  paddingSize = 'default',
+  hasParallaxBg = false,
+  parallaxImage,
+  parallaxSpeed = 0.3,
+  overlayOpacity = 0.4,
+} = Astro.props;
+
+const backgroundClasses = {
+  light: 'bg-mist',
+  dark: 'bg-forest-900 text-mist',
+  mist: 'bg-mist-medium',
+  forest: 'bg-forest-700 text-mist',
+  transparent: 'bg-transparent',
+};
+
+const paddingClasses = {
+  default: 'py-section',
+  large: 'py-section-lg',
+  small: 'py-16 md:py-24',
+};
+---
+
+<section
+  id={id}
+  class:list={[
+    'relative overflow-hidden',
+    backgroundClasses[background],
+    paddingClasses[paddingSize],
+    className,
+  ]}
+>
+  {/* Parallax Background Image */}
+  {hasParallaxBg && parallaxImage && (
+    <div class="absolute inset-0 z-0 overflow-hidden">
+      <div
+        class="absolute inset-0 w-full h-[130%] -top-[15%]"
+        data-parallax-bg={parallaxSpeed}
+      >
+        <img
+          src={parallaxImage}
+          alt=""
+          class="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </div>
+      <div
+        class="absolute inset-0"
+        style={`background: linear-gradient(to bottom, rgba(245, 247, 244, ${overlayOpacity}), rgba(245, 247, 244, ${overlayOpacity + 0.2}))`}
+      ></div>
+    </div>
+  )}
+
+  {/* Content Container */}
+  <div class="relative z-10 container-wide">
+    <slot />
+  </div>
+</section>

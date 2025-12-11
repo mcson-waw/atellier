@@ -30,13 +30,13 @@ const { Content } = await content.render();
 
     <!-- Process Steps -->
     {content.data.steps && (
-      <div class="relative max-w-4xl mx-auto mb-20">
+      <div class="relative max-w-4xl mx-auto mb-20 px-2 sm:px-0">
         <!-- Connecting Line -->
-        <div class="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-forest-200 via-moss to-forest-200 md:-translate-x-1/2 hidden md:block"></div>
+        <div class="absolute left-8 lg:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-forest-200 via-moss to-forest-200 lg:-translate-x-1/2 hidden lg:block"></div>
         
-        <div class="space-y-12" data-stagger="0.2">
+        <div class="space-y-8 sm:space-y-12" data-stagger="0.2">
           {content.data.steps.map((step, index) => (
-            <div class={`flex items-start gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+            <div class={`flex items-start gap-4 sm:gap-8 ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
               <!-- Step Number -->
               <div class="flex-shrink-0 relative z-10">
                 <div class="w-16 h-16 rounded-full bg-forest-600 text-mist flex items-center justify-center text-2xl font-display font-medium shadow-soft-lg">
@@ -45,7 +45,7 @@ const { Content } = await content.render();
               </div>
               
               <!-- Step Content -->
-              <div class={`flex-1 card ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
+              <div class={`flex-1 card p-6 sm:p-8 ${index % 2 === 0 ? 'lg:text-left' : 'lg:text-right'}`}>
                 <h3 class="text-heading text-forest-800 mb-3">
                   {step.title}
                 </h3>

@@ -37,9 +37,9 @@ const iconMap: Record<string, string> = {
 
     <!-- Pain Points Grid -->
     {content.data.painPoints && (
-      <div class="grid md:grid-cols-2 gap-6 lg:gap-8 mb-16" data-stagger="0.1">
+      <div class="grid sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-16" data-stagger="0.1">
         {content.data.painPoints.map((point) => (
-          <div class="card group">
+          <div class="card group p-6 sm:p-8">
             <div class="flex items-start gap-4">
               <div class="flex-shrink-0 w-14 h-14 rounded-full bg-forest-100 flex items-center justify-center text-forest-600 group-hover:bg-forest-600 group-hover:text-mist transition-all duration-500">
                 <Fragment set:html={iconMap[point.icon || 'wave']} />

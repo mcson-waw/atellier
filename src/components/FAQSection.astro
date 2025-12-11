@@ -12,7 +12,7 @@ const { Content } = await content.render();
 ---
 
 <SectionWrapper id="faq" background={content.data.background}>
-  <div class="max-w-3xl mx-auto">
+  <div class="max-w-3xl mx-auto px-2 sm:px-0">
     <!-- Section Header -->
     <div class="text-center mb-16" data-animate="fade-up">
       <h2 class="text-display md:text-display-lg text-forest-900 mb-4">
@@ -34,11 +34,11 @@ const { Content } = await content.render();
             data-faq-item
           >
             <button
-              class="faq-trigger w-full flex items-center justify-between p-6 text-left hover:bg-forest-50 transition-colors duration-300"
+              class="faq-trigger w-full flex items-center justify-between p-4 sm:p-6 text-left hover:bg-forest-50 transition-colors duration-300"
               aria-expanded="false"
               aria-controls={`faq-content-${index}`}
             >
-              <span class="text-heading-sm text-forest-800 pr-4">
+              <span class="text-body sm:text-heading-sm text-forest-800 pr-4">
                 {item.question}
               </span>
               <span class="faq-icon flex-shrink-0 w-8 h-8 rounded-full bg-forest-100 flex items-center justify-center text-forest-600 transition-transform duration-300">

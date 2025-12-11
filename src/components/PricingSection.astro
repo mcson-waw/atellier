@@ -14,8 +14,8 @@ const { Content } = await content.render();
 <SectionWrapper id="pricing" background={content.data.background} className="text-mist">
   <!-- Ambient background -->
   <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <div class="absolute top-0 right-1/4 w-96 h-96 bg-forest-600/30 rounded-full blur-3xl blob-animate-1"></div>
-    <div class="absolute bottom-1/4 left-1/4 w-80 h-80 bg-moss-dark/20 rounded-full blur-3xl blob-animate-2"></div>
+    <div class="absolute top-0 right-1/4 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-forest-600/30 rounded-full blur-3xl blob-animate-1"></div>
+    <div class="absolute bottom-1/4 left-1/4 w-40 sm:w-60 lg:w-80 h-40 sm:h-60 lg:h-80 bg-moss-dark/20 rounded-full blur-3xl blob-animate-2"></div>
   </div>
 
   <div class="relative z-10">
@@ -33,13 +33,13 @@ const { Content } = await content.render();
 
     <!-- Pricing Cards -->
     {content.data.packages && (
-      <div class="grid md:grid-cols-3 gap-6 lg:gap-8 mb-12" data-stagger="0.15">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-12" data-stagger="0.15">
         {content.data.packages.map((pkg) => (
           <div 
             class:list={[
-              'rounded-2xl p-8 transition-all duration-500',
+              'rounded-2xl p-6 sm:p-8 transition-all duration-500',
               pkg.highlighted 
-                ? 'bg-mist text-forest-800 shadow-soft-lg scale-105 md:scale-110' 
+                ? 'bg-mist text-forest-800 shadow-soft-lg sm:scale-105 lg:scale-105 sm:col-span-2 lg:col-span-1' 
                 : 'bg-forest-800/50 backdrop-blur-sm border border-forest-600/30 hover:bg-forest-800/70'
             ]}
           >

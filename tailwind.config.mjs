@@ -45,16 +45,16 @@ export default {
                 display: ['Work Sans', 'Inter', 'system-ui', 'sans-serif'],
             },
             fontSize: {
-                // Calm, spacious typography scale - mobile-first
-                'display-xl': ['clamp(2.5rem, 8vw, 5rem)', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
-                'display-lg': ['clamp(2rem, 6vw, 4rem)', { lineHeight: '1.15', letterSpacing: '-0.02em' }],
-                'display': ['clamp(1.75rem, 5vw, 3rem)', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
-                'heading-lg': ['clamp(1.5rem, 4vw, 2.25rem)', { lineHeight: '1.3', letterSpacing: '-0.01em' }],
-                'heading': ['clamp(1.25rem, 3vw, 1.75rem)', { lineHeight: '1.4' }],
-                'heading-sm': ['clamp(1.125rem, 2.5vw, 1.5rem)', { lineHeight: '1.4' }],
-                'body-lg': ['clamp(1.0625rem, 2vw, 1.25rem)', { lineHeight: '1.7' }],
-                'body': ['clamp(1rem, 1.5vw, 1.125rem)', { lineHeight: '1.8' }],
-                'body-sm': ['clamp(0.875rem, 1.25vw, 1rem)', { lineHeight: '1.7' }],
+                // Calm, spacious typography scale
+                'display-xl': ['3.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+                'display-lg': ['2.75rem', { lineHeight: '1.15', letterSpacing: '-0.02em' }],
+                'display': ['2rem', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
+                'heading-lg': ['1.75rem', { lineHeight: '1.3', letterSpacing: '-0.01em' }],
+                'heading': ['1.5rem', { lineHeight: '1.4' }],
+                'heading-sm': ['1.25rem', { lineHeight: '1.4' }],
+                'body-lg': ['1.125rem', { lineHeight: '1.7' }],
+                'body': ['1rem', { lineHeight: '1.8' }],
+                'body-sm': ['0.9375rem', { lineHeight: '1.7' }],
             },
             spacing: {
                 // Extended spacing for breathing room

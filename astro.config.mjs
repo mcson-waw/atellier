@@ -8,6 +8,7 @@ export default defineConfig({
         tailwind()
     ],
     output: 'static',
+    base: '/atelier',
     build: {
         assets: '_assets'
     }

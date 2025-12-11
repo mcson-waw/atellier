@@ -249,6 +249,17 @@
         @apply prose-ul:text-forest-700 prose-ol:text-forest-700;
         @apply prose-li:marker:text-moss-dark;
     }
+
+    /* Prose for dark backgrounds */
+    .prose-nature-dark {
+        @apply prose prose-lg max-w-none;
+        @apply prose-headings:font-display prose-headings:text-mist;
+        @apply prose-p:text-forest-100 prose-p:leading-relaxed;
+        @apply prose-a:text-moss-light prose-a:no-underline hover:prose-a:text-mist;
+        @apply prose-strong:text-mist prose-strong:font-semibold;
+        @apply prose-ul:text-forest-100 prose-ol:text-forest-100;
+        @apply prose-li:marker:text-moss;
+    }
 }
 
 /* ============================================

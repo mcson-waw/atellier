@@ -2,6 +2,7 @@
 /**
  * Kurs Section Component
  * Information about MBSR course with calming nature background
+ * Personal sticker from Agnieszka floating on the side
  */
 import { getCollection } from 'astro:content';
 import SectionWrapper from './SectionWrapper.astro';
@@ -43,86 +44,146 @@ const { Content } = await content.render();
       )}
     </div>
 
-    <!-- Main content card -->
-    <div class="max-w-4xl mx-auto" data-animate="fade-up">
-      <div class="bg-white/70 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-soft border border-forest-100">
-        
-        <!-- MBSR Description -->
-        <div class="prose prose-forest max-w-none mb-10">
-          <p class="text-lg text-forest-700 leading-relaxed">
-            <strong>MBSR (Mindfulness-Based Stress Reduction)</strong> to 8-tygodniowy program redukcji stresu
-            oparty na uważności, opracowany przez <strong>Jona Kabata-Zinna</strong> – lekarza, neurobiologa i badacza.
+    <!-- Main content with floating sticker -->
+    <div class="relative max-w-5xl mx-auto" data-animate="fade-up">
+      
+      <!-- Agnieszka's personal sticker - floating note (desktop) -->
+      <a href="/atelier/o-mnie" class="hidden lg:block absolute -right-4 top-8 xl:-right-20 w-72 transform rotate-2 hover:rotate-0 transition-all duration-300 group z-20 sticker-float">
+        <div class="bg-cream/95 backdrop-blur-sm rounded-2xl p-5 shadow-lg border border-forest-100 relative">
+          <!-- Pin decoration -->
+          <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-moss rounded-full shadow-sm"></div>
+          
+          <!-- Quote -->
+          <p class="text-sm text-forest-700 italic leading-relaxed mb-3">
+            „<Content />"
           </p>
-          <p class="text-forest-600">
-            Jest to najlepiej przebadany naukowo program mindfulness na świecie,
-            od kilkudziesięciu lat stosowany w medycynie, psychologii i edukacji.
-          </p>
-        </div>
-
-        <!-- Personal note -->
-        <div class="bg-forest-50/50 rounded-2xl p-6 mb-10 border-l-4 border-moss">
-          <p class="text-forest-700 italic">
-            <Content />
-          </p>
-        </div>
-
-        <!-- Course components -->
-        <div class="mb-10">
-          <h3 class="text-heading text-forest-800 mb-6">Z czego składa się kurs</h3>
-          <div class="grid sm:grid-cols-2 gap-4">
-            <div class="flex items-center gap-3 p-4 bg-forest-50/50 rounded-xl">
-              <svg class="w-5 h-5 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="text-forest-700">8 cotygodniowych spotkań online (2,5h)</span>
-            </div>
-            <div class="flex items-center gap-3 p-4 bg-forest-50/50 rounded-xl">
-              <svg class="w-5 h-5 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="text-forest-700">6-godzinny Dzień Uważności</span>
-            </div>
-            <div class="flex items-center gap-3 p-4 bg-forest-50/50 rounded-xl">
-              <svg class="w-5 h-5 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="text-forest-700">Praktyka formalna (medytacje prowadzone)</span>
-            </div>
-            <div class="flex items-center gap-3 p-4 bg-forest-50/50 rounded-xl">
-              <svg class="w-5 h-5 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="text-forest-700">Praktyka nieformalna (uważność w codzienności)</span>
-            </div>
-            <div class="flex items-center gap-3 p-4 bg-forest-50/50 rounded-xl">
-              <svg class="w-5 h-5 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="text-forest-700">Materiały PDF i nagrania</span>
-            </div>
-            <div class="flex items-center gap-3 p-4 bg-forest-50/50 rounded-xl">
-              <svg class="w-5 h-5 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="text-forest-700">Konsultacje indywidualne</span>
-            </div>
-            <div class="flex items-center gap-3 p-4 bg-forest-50/50 rounded-xl sm:col-span-2">
-              <svg class="w-5 h-5 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="text-forest-700">Certyfikat ukończenia kursu</span>
+          
+          <!-- Signature -->
+          <div class="flex items-center gap-2 pt-2 border-t border-forest-100">
+            <div class="w-8 h-8 rounded-full bg-forest-200 flex items-center justify-center text-forest-600 text-xs font-medium">AW</div>
+            <div>
+              <p class="text-xs font-medium text-forest-800">Agnieszka</p>
+              <p class="text-xs text-forest-500 group-hover:text-moss transition-colors">więcej o mnie →</p>
             </div>
           </div>
         </div>
+      </a>
 
-        <!-- Atmosphere note -->
-        <div class="text-center p-6 bg-gradient-to-r from-forest-50/50 via-moss/5 to-forest-50/50 rounded-2xl">
-          <p class="text-forest-600 italic">
-            Pracujemy w kameralnej grupie, w bezpiecznej atmosferze,<br class="hidden sm:inline" />
-            bez presji i bez ocen.
-          </p>
+      <!-- Main content card -->
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white/70 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-soft border border-forest-100">
+          
+          <!-- MBSR Description -->
+          <div class="prose prose-forest max-w-none mb-10">
+            <p class="text-lg text-forest-700 leading-relaxed">
+              <strong>MBSR (Mindfulness-Based Stress Reduction)</strong> to 8-tygodniowy program redukcji stresu
+              oparty na uważności, opracowany przez <strong>Jona Kabata-Zinna</strong> – lekarza, neurobiologa i badacza.
+            </p>
+            <p class="text-forest-600">
+              Jest to najlepiej przebadany naukowo program mindfulness na świecie,
+              od kilkudziesięciu lat stosowany w medycynie, psychologii i edukacji.
+            </p>
+          </div>
+
+          <!-- Mobile sticker -->
+          <a href="/atelier/o-mnie" class="block lg:hidden mb-8 transform -rotate-1 hover:rotate-0 transition-all duration-300 group">
+            <div class="bg-cream/95 backdrop-blur-sm rounded-2xl p-5 shadow-lg border border-forest-100 relative max-w-sm mx-auto">
+              <!-- Pin decoration -->
+              <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-moss rounded-full shadow-sm"></div>
+              
+              <!-- Quote -->
+              <p class="text-sm text-forest-700 italic leading-relaxed mb-3">
+                „<Content />"
+              </p>
+              
+              <!-- Signature -->
+              <div class="flex items-center gap-2 pt-2 border-t border-forest-100">
+                <div class="w-8 h-8 rounded-full bg-forest-200 flex items-center justify-center text-forest-600 text-xs font-medium">AW</div>
+                <div>
+                  <p class="text-xs font-medium text-forest-800">Agnieszka</p>
+                  <p class="text-xs text-forest-500 group-hover:text-moss transition-colors">więcej o mnie →</p>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Course components -->
+          <div class="mb-10">
+            <h3 class="text-heading text-forest-800 mb-6">Z czego składa się kurs</h3>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div class="flex items-center gap-3 p-4 bg-forest-50/50 rounded-xl">
+                <svg class="w-5 h-5 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-forest-700">8 cotygodniowych spotkań online (2,5h)</span>
+              </div>
+              <div class="flex items-center gap-3 p-4 bg-forest-50/50 rounded-xl">
+                <svg class="w-5 h-5 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-forest-700">6-godzinny Dzień Uważności</span>
+              </div>
+              <div class="flex items-center gap-3 p-4 bg-forest-50/50 rounded-xl">
+                <svg class="w-5 h-5 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-forest-700">Praktyka formalna (medytacje prowadzone)</span>
+              </div>
+              <div class="flex items-center gap-3 p-4 bg-forest-50/50 rounded-xl">
+                <svg class="w-5 h-5 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-forest-700">Praktyka nieformalna (uważność w codzienności)</span>
+              </div>
+              <div class="flex items-center gap-3 p-4 bg-forest-50/50 rounded-xl">
+                <svg class="w-5 h-5 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-forest-700">Materiały PDF i nagrania</span>
+              </div>
+              <div class="flex items-center gap-3 p-4 bg-forest-50/50 rounded-xl">
+                <svg class="w-5 h-5 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-forest-700">Konsultacje indywidualne</span>
+              </div>
+              <div class="flex items-center gap-3 p-4 bg-forest-50/50 rounded-xl sm:col-span-2">
+                <svg class="w-5 h-5 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-forest-700">Certyfikat ukończenia kursu</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Atmosphere note -->
+          <div class="text-center p-6 bg-gradient-to-r from-forest-50/50 via-moss/5 to-forest-50/50 rounded-2xl">
+            <p class="text-forest-600 italic">
+              Pracujemy w kameralnej grupie, w bezpiecznej atmosferze,<br class="hidden sm:inline" />
+              bez presji i bez ocen.
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </SectionWrapper>
+
+<style>
+  .sticker-float {
+    animation: sticker-gentle 8s ease-in-out infinite;
+  }
+  
+  @keyframes sticker-gentle {
+    0%, 100% {
+      transform: rotate(2deg) translateY(0);
+    }
+    50% {
+      transform: rotate(1deg) translateY(-5px);
+    }
+  }
+  
+  .sticker-float:hover {
+    animation-play-state: paused;
+  }
+</style>

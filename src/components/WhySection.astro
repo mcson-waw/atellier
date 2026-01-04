@@ -50,20 +50,75 @@ const iconMap: Record<string, string> = {
       </div>
     )}
 
-    <!-- CTA Message -->
-    <div class="text-center" data-animate="fade-up">
-      <p class="text-heading text-forest-800 mb-8">
-        Jeśli choć jeden z tych punktów do Ciebie przemawia – <br class="hidden sm:inline" />
-        <span class="text-moss-dark font-medium">jesteś w dobrym miejscu.</span>
+    <!-- CTA Message with floating elements -->
+    <div class="relative text-center py-8" data-animate="fade-up">
+      <!-- Main message -->
+      <p class="text-heading text-forest-800 mb-2">
+        Jeśli choć jeden z tych punktów do Ciebie przemawia –
       </p>
       
-      <!-- Scroll indicator -->
-      <a href="#kurs" class="inline-flex flex-col items-center gap-2 text-forest-500 hover:text-forest-700 transition-colors group">
-        <span class="text-sm font-medium">Dowiedz się więcej</span>
-        <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      </a>
+      <!-- Highlighted message with floating decorations -->
+      <div class="relative inline-block">
+        <span class="text-2xl md:text-3xl text-moss-dark font-medium">jesteś w dobrym miejscu</span>
+        
+        <!-- Floating "Dowiedz się więcej" - orbiting element -->
+        <a 
+          href="#kurs" 
+          class="absolute -right-4 -top-8 md:-right-8 md:-top-6 floating-cta group"
+        >
+          <span class="inline-flex items-center gap-1 text-xs text-forest-500 hover:text-moss transition-colors cursor-pointer">
+            <span class="font-medium">więcej</span>
+            <svg class="w-3 h-3 rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            </svg>
+          </span>
+        </a>
+        
+        <!-- Small floating arrow on the other side -->
+        <a 
+          href="#kurs" 
+          class="absolute -left-6 -bottom-4 md:-left-10 md:-bottom-2 floating-arrow"
+        >
+          <svg class="w-4 h-4 text-moss/60 hover:text-moss transition-colors cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
 </SectionWrapper>
+
+<style>
+  .floating-cta {
+    animation: float-orbit 6s ease-in-out infinite;
+  }
+  
+  .floating-arrow {
+    animation: float-gentle 4s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+  
+  @keyframes float-orbit {
+    0%, 100% {
+      transform: translate(0, 0) rotate(-3deg);
+    }
+    25% {
+      transform: translate(3px, -5px) rotate(0deg);
+    }
+    50% {
+      transform: translate(0, -3px) rotate(3deg);
+    }
+    75% {
+      transform: translate(-3px, -5px) rotate(0deg);
+    }
+  }
+  
+  @keyframes float-gentle {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(2px, 4px);
+    }
+  }
+</style>

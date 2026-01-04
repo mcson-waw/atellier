@@ -1,0 +1,63 @@
+---
+/**
+ * CTA Section Component
+ * Call to action before contact - "Dla kogo jest kurs"
+ */
+import { getCollection } from 'astro:content';
+import SectionWrapper from './SectionWrapper.astro';
+
+const ctaContent = await getCollection('cta');
+const cta = ctaContent[0];
+const { Content } = await cta.render();
+---
+
+<SectionWrapper id="dla-kogo-kurs" background={cta.data.background}>
+  <div class="container-wide">
+    <div class="max-w-4xl mx-auto">
+      <!-- Section Header -->
+      <div class="text-center mb-12">
+        <h2 class="text-heading md:text-heading-lg text-mist mb-4">
+          {cta.data.title}
+        </h2>
+        
+        {cta.data.subtitle && (
+          <p class="text-body-lg text-forest-100/80">
+            {cta.data.subtitle}
+          </p>
+        )}
+      </div>
+
+      <!-- Benefits List -->
+      {cta.data.benefits && cta.data.benefits.length > 0 && (
+        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-8">
+          <p class="text-mist font-medium mb-6 text-center">Kurs MBSR jest dla osób, które chcą:</p>
+          <ul class="space-y-4">
+            {cta.data.benefits.map((benefit: string) => (
+              <li class="flex items-start gap-3 text-forest-100">
+                <svg class="w-6 h-6 text-moss flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <!-- Content -->
+      <div class="prose prose-invert mx-auto text-center">
+        <Content />
+      </div>
+
+      <!-- CTA Button -->
+      <div class="text-center mt-8">
+        <a
+          href="#kontakt"
+          class="inline-flex items-center justify-center px-8 py-4 bg-moss hover:bg-moss-dark text-white font-medium rounded-full transition-all duration-300 hover:scale-105"
+        >
+          Skontaktuj się ze mną
+        </a>
+      </div>
+    </div>
+  </div>
+</SectionWrapper>

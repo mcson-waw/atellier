@@ -7,19 +7,17 @@
 interface Props {
   email?: string;
   phone?: string;
-  location?: string;
 }
 
 const {
-  email = 'hello@atelier.com',
-  phone = '+48 123 456 789',
-  location = 'Warsaw, Poland',
+  email = 'wrzesinska.agnieszka@gmail.com',
+  phone = '501 064 611',
 } = Astro.props;
 
 const currentYear = new Date().getFullYear();
 ---
 
-<footer id="footer" class="relative bg-forest-900 text-forest-100 overflow-hidden">
+<footer id="kontakt" class="relative bg-forest-900 text-forest-100 overflow-hidden">
   <!-- Ambient background -->
   <div class="absolute inset-0 opacity-30">
     <div class="absolute top-0 left-1/4 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-forest-700 rounded-full blur-3xl"></div>
@@ -31,17 +29,17 @@ const currentYear = new Date().getFullYear();
       <!-- Left Column -->
       <div data-animate="fade-up">
         <h2 class="text-display-lg text-mist mb-6">
-          Ready to begin?
+          Kontakt
         </h2>
         <p class="text-body-lg text-forest-200 mb-8 max-w-md">
-          Taking the first step is often the hardest. But you don't have to figure everything out alone.
-          Reach out, and let's talk about what support might look like for you.
+          Jeśli czujesz, że to może być Twój moment, zapraszam do kontaktu.
+          Z radością opowiem Ci więcej o kursie i odpowiem na Twoje pytania.
         </p>
         <a
           href={`mailto:${email}`}
           class="btn-primary inline-flex items-center gap-3 bg-moss text-forest-900 hover:bg-moss-light"
         >
-          <span>Get in touch</span>
+          <span>Napisz do mnie</span>
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
@@ -61,9 +59,9 @@ const currentYear = new Date().getFullYear();
         </div>
 
         <div>
-          <h3 class="text-sm uppercase tracking-wider text-forest-400 mb-3">Phone</h3>
+          <h3 class="text-sm uppercase tracking-wider text-forest-400 mb-3">Telefon</h3>
           <a
-            href={`tel:${phone.replace(/\s/g, '')}`}
+            href={`tel:+48${phone.replace(/\s/g, '')}`}
             class="text-heading text-mist hover:text-moss transition-colors duration-300"
           >
             {phone}
@@ -71,10 +69,23 @@ const currentYear = new Date().getFullYear();
         </div>
 
         <div>
-          <h3 class="text-sm uppercase tracking-wider text-forest-400 mb-3">Location</h3>
-          <p class="text-heading text-mist">
-            {location}
+          <h3 class="text-sm uppercase tracking-wider text-forest-400 mb-3">Agnieszka Wrzesińska</h3>
+          <p class="text-body text-forest-300">
+            Nauczycielka MBSR
           </p>
+        </div>
+
+        <!-- Checkbox Regulamin -->
+        <div class="pt-4">
+          <label class="flex items-start gap-3 cursor-pointer group">
+            <input 
+              type="checkbox" 
+              class="mt-1 w-4 h-4 rounded border-forest-600 bg-forest-800 text-moss focus:ring-moss focus:ring-offset-forest-900"
+            />
+            <span class="text-sm text-forest-400 group-hover:text-forest-300 transition-colors">
+              Akceptuję <a href="#" class="text-moss hover:text-moss-light underline">Regulamin</a>
+            </span>
+          </label>
         </div>
       </div>
     </div>
@@ -86,17 +97,8 @@ const currentYear = new Date().getFullYear();
         <span class="font-display font-medium">Atelier Spokoju</span>
       </div>
 
-      <nav class="flex flex-wrap justify-center gap-6 text-sm text-forest-400">
-        <a href="#regulations" class="hover:text-mist transition-colors duration-300">
-          Privacy Policy
-        </a>
-        <a href="#regulations" class="hover:text-mist transition-colors duration-300">
-          Terms of Service
-        </a>
-      </nav>
-
       <p class="text-sm text-forest-500">
-        © {currentYear} All rights reserved.
+        © {currentYear} Wszelkie prawa zastrzeżone.
       </p>
     </div>
   </div>

@@ -8,11 +8,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Nav from '../components/Nav.astro';
 import Hero from '../components/Hero.astro';
 import WhySection from '../components/WhySection.astro';
-import HowSection from '../components/HowSection.astro';
-import ProcessSection from '../components/ProcessSection.astro';
-import PricingSection from '../components/PricingSection.astro';
+import KursSection from '../components/KursSection.astro';
 import FAQSection from '../components/FAQSection.astro';
-import RegulationsSection from '../components/RegulationsSection.astro';
+import AboutSection from '../components/AboutSection.astro';
+import CTASection from '../components/CTASection.astro';
 import Footer from '../components/Footer.astro';
 import SmoothScrollWrapper from '../components/SmoothScrollWrapper.astro';
 
@@ -22,8 +21,8 @@ const hero = heroContent[0];
 ---
 
 <BaseLayout
-  title="Atelier | Mindfulness & Stress Reduction"
-  description="A nature-based approach to stress reduction, nervous system regulation, and mindful living. Find your way back to calm."
+  title="Atelier Spokoju | Kurs MBSR - Redukcja Stresu przez Uważność"
+  description="Uważne życie to lepsze życie. 8-tygodniowy kurs MBSR - redukcja stresu oparta na uważności. Zapraszam do kontaktu."
 >
   <Nav />
   
@@ -38,29 +37,22 @@ const hero = heroContent[0];
         ctaHref={hero.data.ctaHref}
       />
 
-      <!-- Why Section -->
+      <!-- Dla kogo jest ta strona -->
       <WhySection />
 
-      <!-- How Section -->
-      <HowSection />
-
-      <!-- Process Section -->
-      <ProcessSection />
-
-      <!-- Pricing Section -->
-      <PricingSection />
+      <!-- Kurs MBSR - informacje o kursie -->
+      <KursSection />
 
       <!-- FAQ Section -->
       <FAQSection />
 
-      <!-- Regulations Section -->
-      <RegulationsSection />
+      <!-- O mnie (krótka wersja) -->
+      <AboutSection />
+
+      <!-- Dla kogo jest kurs - CTA -->
+      <CTASection />
     </main>
 
-    <Footer
-      email="hello@atelier.com"
-      phone="+48 123 456 789"
-      location="Warsaw, Poland"
-    />
+    <Footer />
   </SmoothScrollWrapper>
 </BaseLayout>

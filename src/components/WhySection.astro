@@ -12,57 +12,58 @@ const content = whyContent[0];
 const { Content } = await content.render();
 
 const iconMap: Record<string, string> = {
-  wave: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>`,
-  unlink: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>`,
-  battery: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8h14a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4a2 2 0 012-2zm16 3h2m-6-1v2"/></svg>`,
-  body: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>`,
+  wave: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>`,
+  unlink: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+  battery: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8h14a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4a2 2 0 012-2zm16 3h2m-6-1v2"/></svg>`,
+  body: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>`,
+  heart: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>`,
+  leaf: `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>`,
 };
 ---
 
-<SectionWrapper id="why" background={content.data.background}>
+<SectionWrapper id="dla-kogo" background={content.data.background}>
   <BlobAmbientBackground variant="light" intensity="subtle" />
   
   <div class="relative z-10">
     <!-- Section Header -->
-    <div class="text-center mb-16" data-animate="fade-up">
+    <div class="text-center mb-10" data-animate="fade-up">
       <h2 class="text-display md:text-display-lg text-forest-900 mb-4">
         {content.data.title}
       </h2>
-      {content.data.subtitle && (
-        <p class="text-body-lg text-forest-600 max-w-2xl mx-auto">
-          {content.data.subtitle}
-        </p>
-      )}
     </div>
 
-    <!-- Pain Points Grid -->
+    <!-- Pain Points - Compact List -->
     {content.data.painPoints && (
-      <div class="grid sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-16" data-stagger="0.1">
-        {content.data.painPoints.map((point) => (
-          <div class="card group p-6 sm:p-8">
-            <div class="flex items-start gap-4">
-              <div class="flex-shrink-0 w-14 h-14 rounded-full bg-forest-100 flex items-center justify-center text-forest-600 group-hover:bg-forest-600 group-hover:text-mist transition-all duration-500">
+      <div class="max-w-2xl mx-auto mb-10" data-animate="fade-up">
+        <div class="space-y-4">
+          {content.data.painPoints.map((point) => (
+            <div class="flex items-center gap-4 p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-forest-100 hover:border-forest-200 transition-all duration-300">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-forest-100 flex items-center justify-center text-forest-600">
                 <Fragment set:html={iconMap[point.icon || 'wave']} />
               </div>
-              <div>
-                <h3 class="text-heading-sm text-forest-800 mb-2">
-                  {point.title}
-                </h3>
-                <p class="text-body-sm text-forest-600">
-                  {point.description}
-                </p>
-              </div>
+              <p class="text-body text-forest-700">
+                {point.description}
+              </p>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     )}
 
-    <!-- Main Content -->
-    <div class="max-w-3xl mx-auto" data-animate="fade-up">
-      <div class="prose-nature">
-        <Content />
-      </div>
+    <!-- CTA Message -->
+    <div class="text-center" data-animate="fade-up">
+      <p class="text-heading text-forest-800 mb-8">
+        Jeśli choć jeden z tych punktów do Ciebie przemawia – <br class="hidden sm:inline" />
+        <span class="text-moss-dark font-medium">jesteś w dobrym miejscu.</span>
+      </p>
+      
+      <!-- Scroll indicator -->
+      <a href="#kurs" class="inline-flex flex-col items-center gap-2 text-forest-500 hover:text-forest-700 transition-colors group">
+        <span class="text-sm font-medium">Dowiedz się więcej</span>
+        <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </a>
     </div>
   </div>
 </SectionWrapper>

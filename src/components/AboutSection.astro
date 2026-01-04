@@ -1,0 +1,45 @@
+---
+/**
+ * About Section Component
+ * Short bio with link to full about page
+ */
+import { getCollection } from 'astro:content';
+import SectionWrapper from './SectionWrapper.astro';
+
+const aboutContent = await getCollection('about');
+const about = aboutContent[0];
+const { Content } = await about.render();
+---
+
+<SectionWrapper id="o-mnie" background={about.data.background}>
+  <div class="container-wide">
+    <div class="max-w-3xl mx-auto text-center">
+      <!-- Section Header -->
+      <h2 class="text-heading md:text-heading-lg text-forest-900 mb-4">
+        {about.data.title}
+      </h2>
+      
+      {about.data.subtitle && (
+        <p class="text-body-lg text-forest-600 mb-8 font-medium">
+          {about.data.subtitle}
+        </p>
+      )}
+
+      <!-- Content -->
+      <div class="prose prose-forest mx-auto mb-8 text-left">
+        <Content />
+      </div>
+
+      <!-- Link to full page -->
+      <a
+        href="/atelier/o-mnie"
+        class="inline-flex items-center gap-2 text-moss-dark hover:text-moss transition-colors font-medium"
+      >
+        Poznaj mnie bliżej
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</SectionWrapper>

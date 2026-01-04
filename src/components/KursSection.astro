@@ -1,0 +1,128 @@
+---
+/**
+ * Kurs Section Component
+ * Information about MBSR course with calming nature background
+ */
+import { getCollection } from 'astro:content';
+import SectionWrapper from './SectionWrapper.astro';
+
+const kursContent = await getCollection('kurs');
+const content = kursContent[0];
+const { Content } = await content.render();
+---
+
+<SectionWrapper id="kurs" background={content.data.background}>
+  <!-- Subtle nature-inspired background -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <!-- Soft gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-forest-50/30 to-transparent"></div>
+    
+    <!-- Subtle leaf patterns - very delicate -->
+    <svg class="absolute top-10 right-10 w-32 h-32 text-forest-200/30" viewBox="0 0 100 100" fill="currentColor">
+      <path d="M50 5 C60 20, 80 30, 85 50 C80 70, 60 80, 50 95 C40 80, 20 70, 15 50 C20 30, 40 20, 50 5 Z" />
+    </svg>
+    <svg class="absolute bottom-20 left-10 w-24 h-24 text-moss/10" viewBox="0 0 100 100" fill="currentColor">
+      <path d="M50 5 C60 20, 80 30, 85 50 C80 70, 60 80, 50 95 C40 80, 20 70, 15 50 C20 30, 40 20, 50 5 Z" />
+    </svg>
+    
+    <!-- Soft organic shapes -->
+    <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-forest-100/40 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-48 h-48 bg-moss/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative z-10">
+    <!-- Section Header -->
+    <div class="text-center mb-12" data-animate="fade-up">
+      <h2 class="text-display md:text-display-lg text-forest-900 mb-4">
+        {content.data.title}
+      </h2>
+      {content.data.subtitle && (
+        <p class="text-body-lg text-forest-600 max-w-2xl mx-auto">
+          {content.data.subtitle}
+        </p>
+      )}
+    </div>
+
+    <!-- Main content card -->
+    <div class="max-w-4xl mx-auto" data-animate="fade-up">
+      <div class="bg-white/70 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-soft border border-forest-100">
+        
+        <!-- MBSR Description -->
+        <div class="prose prose-forest max-w-none mb-10">
+          <p class="text-lg text-forest-700 leading-relaxed">
+            <strong>MBSR (Mindfulness-Based Stress Reduction)</strong> to 8-tygodniowy program redukcji stresu
+            oparty na uważności, opracowany przez <strong>Jona Kabata-Zinna</strong> – lekarza, neurobiologa i badacza.
+          </p>
+          <p class="text-forest-600">
+            Jest to najlepiej przebadany naukowo program mindfulness na świecie,
+            od kilkudziesięciu lat stosowany w medycynie, psychologii i edukacji.
+          </p>
+        </div>
+
+        <!-- Personal note -->
+        <div class="bg-forest-50/50 rounded-2xl p-6 mb-10 border-l-4 border-moss">
+          <p class="text-forest-700 italic">
+            <Content />
+          </p>
+        </div>
+
+        <!-- Course components -->
+        <div class="mb-10">
+          <h3 class="text-heading text-forest-800 mb-6">Z czego składa się kurs</h3>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="flex items-center gap-3 p-4 bg-forest-50/50 rounded-xl">
+              <svg class="w-5 h-5 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-forest-700">8 cotygodniowych spotkań online (2,5h)</span>
+            </div>
+            <div class="flex items-center gap-3 p-4 bg-forest-50/50 rounded-xl">
+              <svg class="w-5 h-5 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-forest-700">6-godzinny Dzień Uważności</span>
+            </div>
+            <div class="flex items-center gap-3 p-4 bg-forest-50/50 rounded-xl">
+              <svg class="w-5 h-5 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-forest-700">Praktyka formalna (medytacje prowadzone)</span>
+            </div>
+            <div class="flex items-center gap-3 p-4 bg-forest-50/50 rounded-xl">
+              <svg class="w-5 h-5 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-forest-700">Praktyka nieformalna (uważność w codzienności)</span>
+            </div>
+            <div class="flex items-center gap-3 p-4 bg-forest-50/50 rounded-xl">
+              <svg class="w-5 h-5 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-forest-700">Materiały PDF i nagrania</span>
+            </div>
+            <div class="flex items-center gap-3 p-4 bg-forest-50/50 rounded-xl">
+              <svg class="w-5 h-5 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-forest-700">Konsultacje indywidualne</span>
+            </div>
+            <div class="flex items-center gap-3 p-4 bg-forest-50/50 rounded-xl sm:col-span-2">
+              <svg class="w-5 h-5 text-moss flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="text-forest-700">Certyfikat ukończenia kursu</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Atmosphere note -->
+        <div class="text-center p-6 bg-gradient-to-r from-forest-50/50 via-moss/5 to-forest-50/50 rounded-2xl">
+          <p class="text-forest-600 italic">
+            Pracujemy w kameralnej grupie, w bezpiecznej atmosferze,<br class="hidden sm:inline" />
+            bez presji i bez ocen.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</SectionWrapper>

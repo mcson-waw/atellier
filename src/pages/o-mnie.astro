@@ -1,0 +1,69 @@
+---
+/**
+ * About Page - Pełna strona O mnie
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import SmoothScrollWrapper from '../components/SmoothScrollWrapper.astro';
+---
+
+<BaseLayout
+  title="O mnie | Agnieszka Wrzesińska - Nauczycielka MBSR"
+  description="Poznaj Agnieszkę Wrzesińską - nauczycielkę MBSR w procesie certyfikacji w Polskim Instytucie Mindfulness."
+>
+  <Nav />
+  
+  <SmoothScrollWrapper>
+    <main class="pt-24 pb-16">
+      <div class="container-wide">
+        <div class="max-w-3xl mx-auto">
+          <h1 class="text-display md:text-display-lg text-forest-900 mb-8">
+            O mnie
+          </h1>
+          
+          <div class="prose prose-forest prose-lg">
+            <p class="text-xl text-forest-600 mb-8">
+              Nazywam się Agnieszka Wrzesińska.
+            </p>
+            
+            <p>
+              Uważność towarzyszy mi od lat – najpierw jako osobista praktyka,
+              później jako świadoma ścieżka rozwoju i pracy z innymi.
+            </p>
+            
+            <p>
+              Jestem nauczycielką MBSR w procesie certyfikacji
+              w Polskim Instytucie Mindfulness.
+            </p>
+            
+            <p>
+              Dzielę się tym, co sama sprawdziłam i czym żyję,
+              z głębokiego przekonania, że uważność realnie poprawia jakość życia.
+            </p>
+
+            <div class="mt-12 p-6 bg-forest-50 rounded-2xl">
+              <p class="text-forest-600 italic mb-0">
+                Pełna treść tej strony zostanie wkrótce uzupełniona.
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-12">
+            <a
+              href="/atelier/"
+              class="inline-flex items-center gap-2 text-moss-dark hover:text-moss transition-colors font-medium"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+              Wróć do strony głównej
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <Footer />
+  </SmoothScrollWrapper>
+</BaseLayout>

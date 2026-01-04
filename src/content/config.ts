@@ -103,6 +103,26 @@ const regulationsCollection = defineCollection({
     }),
 });
 
+// About section schema
+const aboutCollection = defineCollection({
+    type: 'content',
+    schema: sectionSchema,
+});
+
+// CTA section schema
+const ctaCollection = defineCollection({
+    type: 'content',
+    schema: sectionSchema.extend({
+        benefits: z.array(z.string()).optional(),
+    }),
+});
+
+// Kurs section schema
+const kursCollection = defineCollection({
+    type: 'content',
+    schema: sectionSchema,
+});
+
 export const collections = {
     hero: heroCollection,
     why: whyCollection,
@@ -111,4 +131,7 @@ export const collections = {
     pricing: pricingCollection,
     faq: faqCollection,
     regulations: regulationsCollection,
+    about: aboutCollection,
+    cta: ctaCollection,
+    kurs: kursCollection,
 };

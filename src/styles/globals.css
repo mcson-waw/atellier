@@ -63,7 +63,8 @@
     html {
         scroll-behavior: auto;
         /* Lenis handles smooth scroll */
-        scroll-padding-top: 80px; /* Offset for anchor links */
+        scroll-padding-top: 20px;
+        /* Minimal offset for anchor links */
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-rendering: optimizeLegibility;
